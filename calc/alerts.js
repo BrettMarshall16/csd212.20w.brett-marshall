@@ -13,7 +13,7 @@
   function subtract() {
     alert("-");
   }
-  function clear() {
+  function clr() {
     alert("clear");
   }
   function number(){
