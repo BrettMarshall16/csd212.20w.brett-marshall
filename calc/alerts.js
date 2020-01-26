@@ -1,3 +1,5 @@
+let display = document.getElementById('display')
+
   function equal() {
     alert("=");
   }
@@ -13,9 +15,28 @@
   function subtract() {
     alert("-");
   }
-  function clear() {
-    alert("clear");
+
+  function buttonClick(theButton){
+    let pushed = theButton.innterHTML;
+    if (pushed == 'clear'){
+      display.innerHTML = '0';
+    }
+    else{
+      display.innerHTML += pushed;
+    }
   }
-  function number(){
-      alert("number");
-  }
+ /* function buttonClick(theButton){
+    let pushed = theButton.innerHTML
+    
+    if (pushed == "clear"){
+      display.innerHTML = "0"
+    }
+    else{
+      if(display.innerHTML = "0"){
+        display.innerHTML = pushed;
+      }
+      else {
+        display.innerHTML += pushed;
+      }
+    }
+  }*/

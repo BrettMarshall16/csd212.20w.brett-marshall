@@ -69,3 +69,6 @@ table, th, tr {
     font-size: 12px;
     cursor: pointer;
 }
+#display{
+    text-align: right;
+}

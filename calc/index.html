@@ -9,43 +9,40 @@
     <title>Calculator</title>
 </head>
 <body>
+<div class="containter">
+    <table class="calculator">
+        <tr>
+            <td colspan="4" id="display">0</td>
+        </tr>
+        <tr>
+            <td colspan="3"><button class="clear" type="button" onclick="buttonClick(0)">clear</button></td>
+            <td><button class="op div" type="button" onclick="divide()">/</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" type="button" onclick="buttonClick(9)">9</button></td>
+            <td><button class="num" type="button" onclick="buttonClick(8)">8</button></td>
+            <td><button class="num" type="button" onclick="buttonClick(7)">7</button></td>
+            <td><button class="op mul" type="button" onclick="multiply()">x</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" type="button" onclick="number()">4</button></td>
+            <td><button class="num" type="button" onclick="number()">5</button></td>
+            <td><button class="num" type="button" onclick="number()">6</button></td>
+            <td><button class="op sub" type="button" onclick="subtract()">-</button></td>
+        </tr>
+        <tr>
+            <td><button class="num" type="button" onclick="number()">1</button></td>
+            <td><button class="num" type="button" onclick="number()">2</button></td>
+            <td><button class="num" type="button" onclick="number()">3</button></td>
+            <td><button class="op add" type="button" onclick="plus()">+</button></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;"><button class="numo" type="button" onclick="number()"> 0</button></td>
+            <td><button class="point" type="button">.</button></td>
+            <td><button class="eq" type="button" onclick="equal()">=</button></td>
+        </tr>
 
-<table class="calculator">
-    <tr>
-        <td colspan="4" style="text-align: right;"><div class="display">0</div></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="3" style="text-align: center;"><button class="clear" type="button" onclick="clear()">clear</button></td>
-        <td><button class="op div" type="button" onclick="divide()">/</button></td>
-    </tr>
-    <tr>
-        <td><button class="num" type="button" onclick="number()">9</button></td>
-        <td><button class="num" type="button" onclick="number()">8</button></td>
-        <td><button class="num" type="button" onclick="number()">7</button></td>
-        <td><button class="op mul" type="button" onclick="multiply()">x</button></td>
-    </tr>
-    <tr>
-        <td><button class="num" type="button" onclick="number()">4</button></td>
-        <td><button class="num" type="button" onclick="number()">5</button></td>
-        <td><button class="num" type="button" onclick="number()">6</button></td>
-        <td><button class="op sub" type="button" onclick="subtract()">-</button></td>
-    </tr>
-    <tr>
-        <td><button class="num" type="button" onclick="number()">1</button></td>
-        <td><button class="num" type="button" onclick="number()">2</button></td>
-        <td><button class="num" type="button" onclick="number()">3</button></td>
-        <td><button class="op add" type="button" onclick="plus()">+</button></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: center;"><button class="numo" type="button" onclick="number()"> 0</button></td>
-        <td><button class="point" type="button">.</button></td>
-        <td><button class="eq" type="button" onclick="equal()">=</button></td>
-    </tr>
-
-</table>
-
+    </table>
+</div>
 </body>
 </html>
