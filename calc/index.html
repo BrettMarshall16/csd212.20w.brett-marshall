@@ -5,44 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="calc.css">
-    <script src="alerts.js"></script>
     <title>Calculator</title>
 </head>
+<script>
+    function insert(num){
+  document.form.display.value = document.form.display.value+num;
+}
+function clean(){
+  document.form.display.value = "0";
+}
+</script>
 <body>
 <div class="containter">
-    <table class="calculator">
-        <tr>
-            <td colspan="4" id="display">0</td>
-        </tr>
-        <tr>
-            <td colspan="3"><button class="clear" type="button" onclick="buttonClick(0)">clear</button></td>
-            <td><button class="op div" type="button" onclick="divide()">/</button></td>
-        </tr>
-        <tr>
-            <td><button class="num" type="button" onclick="buttonClick(9)">9</button></td>
-            <td><button class="num" type="button" onclick="buttonClick(8)">8</button></td>
-            <td><button class="num" type="button" onclick="buttonClick(7)">7</button></td>
-            <td><button class="op mul" type="button" onclick="multiply()">x</button></td>
-        </tr>
-        <tr>
-            <td><button class="num" type="button" onclick="number()">4</button></td>
-            <td><button class="num" type="button" onclick="number()">5</button></td>
-            <td><button class="num" type="button" onclick="number()">6</button></td>
-            <td><button class="op sub" type="button" onclick="subtract()">-</button></td>
-        </tr>
-        <tr>
-            <td><button class="num" type="button" onclick="number()">1</button></td>
-            <td><button class="num" type="button" onclick="number()">2</button></td>
-            <td><button class="num" type="button" onclick="number()">3</button></td>
-            <td><button class="op add" type="button" onclick="plus()">+</button></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align: center;"><button class="numo" type="button" onclick="number()"> 0</button></td>
-            <td><button class="point" type="button">.</button></td>
-            <td><button class="eq" type="button" onclick="equal()">=</button></td>
-        </tr>
+    <form name="form">
+        <table>
+            <input class="display" name="display">
+            <tr>
+                <td colspan="3"><input class="clear" type="button" value="clear" onclick="clean(0)"></input></td>
+                <td><button class="op div" type="button" value="'/'" onclick="insert('/')"></button></td>
+            </tr>
+            <tr>
+                <td><input class="num" type="button" value="9" onclick="insert(9)"></input></td>
+                <td><input class="num" type="button" value="8" onclick="insert(8)"></input></td>
+                <td><input class="num" type="button" value="7" onclick="insert(7)"></input></td>
+                <td><input class="op mul" type="button" value="x" onclick="insert('*')"></input></td>
+            </tr>
+            <tr>
+                <td><input class="num" type="button" value="4" onclick="insert(4)"></input></td>
+                <td><input class="num" type="button" value="5" onclick="insert(5)"></input></td>
+                <td><input class="num" type="button" value="6" onclick="insert(6)"></input></td>
+                <td><input class="op sub" type="button" value="-" onclick="insert('-')"></input></td>
+            </tr>
+            <tr>
+                <td><input class="num" type="button" value="1" onclick="insert(1)"></input></td>
+                <td><input class="num" type="button" value="2" onclick="insert(2)"></input></td>
+                <td><input class="num" type="button" value="3" onclick="insert(3)"></input></td>
+                <td><input class="op add" type="button" value="+" onclick="insert('+')"></input></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><input class="numo" type="button" value="0" onclick="insert(0)"></input></td>
+                <td><input class="point" type="button" value="."></input></td>
+                <td><input class="eq" type="button" value="=" onclick="insert('=')"></input></td>
+            </tr>
 
-    </table>
+        </table>
+    </form>
 </div>
 </body>
 </html>
