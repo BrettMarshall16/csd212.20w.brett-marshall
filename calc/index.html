@@ -7,18 +7,11 @@
     <link rel="stylesheet" type="text/css" href="calc.css">
     <title>Calculator</title>
 </head>
-<script>function insert(num){
-  document.getElementById('display').innerHTML = document.getElementById('display').innerHTML+num;
-}
-function clean(){
-  document.getElementById('display').innerHTML = "0";
-}
-</script>
 <body>
 <div class="containter">
     <form name="form">
         <table>
-            <div class="display" id="display">0</div>
+            <div class="display" id="display" >0</div>
             <tr>
                 <td colspan="3"><input class="clear" type="button" value="clear" onclick="clean(0)"></td>
                 <td><button class="op div" type="button" value="'/'" onclick="insert('/')"></button></td>
@@ -43,7 +36,7 @@ function clean(){
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center;"><input class="numo" type="button" value="0" onclick="insert(0)"></td>
-                <td><input class="point" type="button" value="."></td>
+                <td><input class="point" type="button" value="." onclick="insert('.')"></td>
                 <td><input class="eq" type="button" value="=" onclick="insert('=')"></td>
             </tr>
 
@@ -51,4 +44,22 @@ function clean(){
     </form>
 </div>
 </body>
+<script>
+function insert(num){
+    document.getElementById('display').innerHTML = document.getElementById('display').innerHTML+num;
+}
+function clean(){
+    document.getElementById('display').innerHTML = "0";
+}
+let display = document.getElementsByName("display");
+let decimalClicker = false;
+document.getElementsByClassName("point").addEventListener("click", function(){
+    if (display != ".")
+        if(decimalClicked != true){
+            display += ".";
+            decimalClicked = true;
+        }
+}
+)
+</script>
 </html>
