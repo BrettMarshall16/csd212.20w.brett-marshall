@@ -1,86 +1,55 @@
-*{
-    padding: 2px;
-    margin: 0px;
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+
+table{
+    background-color: lightcoral;
+}
+body{
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-table, th, tr {
-    border: 1px solid black;
-    background-color: grey;
-
-    }
-.clear {
-    background-color: red;
-    border: none;
-    color: white;
-    width: 75px;
-    height: 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-      }
-.numo {
-    background-color: white;
-    border: none;
+.num{
+    background-color: peachpuff;
     color: black;
     width: 50px;
-    height: 25px;
+    height: 50px;
+    border: 1px solid gray;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
-    }
-.num {
-    background-color: white;
-    border: none;
-    color: black;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    }
-.op {
-    background-color: orange;
-    border: none;
-    color: black;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-}
-.eq{
-    background-color: green;
-    border: none;
-    color: black;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
+    padding-top: 3px;
+
 }
 .point{
-    background-color: white;
-    border: none;
+    background-color: peachpuff;
     color: black;
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    cursor: pointer;
+    padding-top: 3px;
+
+}
+
+.clear{
+    background-color: lightseagreen;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: 3px;  
+}
+.op{
+    background-color: skyblue;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: 3px;  
 }
 .display{
     text-align: right;
-    width: 125px;
+    width: 241px;
+    background-color: lightcoral;
+    font-size: 25px;
 }

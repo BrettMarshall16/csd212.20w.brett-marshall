@@ -9,57 +9,94 @@
 </head>
 <body>
 <div class="containter">
-    <form name="form">
-        <table>
-            <div class="display" id="display" >0</div>
+    <form name="calc">
+        <table cellspacing="5px">
+            <div class="display" id="display">0</div>
             <tr>
-                <td colspan="3"><input class="clear" type="button" value="clear" onclick="clean(0)"></td>
-                <td><button class="op div" type="button" value="'/'" onclick="insert('/')"></button></td>
+                <td colspan= "3" class="clear" id="clear">clear</td>
+                <td class="op" id="opDivide">/</td>
             </tr>
             <tr>
-                <td><input class="num" type="button" value="9" onclick="insert(9)"></td>
-                <td><input class="num" type="button" value="8" onclick="insert(8)"></td>
-                <td><input class="num" type="button" value="7" onclick="insert(7)"></td>
-                <td><input class="op mul" type="button" value="x" onclick="insert('*')"></td>
+                <td class="num" id="numberSeven">7</td>
+                <td class="num" id="numberEight">8</td>
+                <td class="num" id="numberNine">9</td>
+                <td class="op" id="opMultiply">x</td>
             </tr>
             <tr>
-                <td><input class="num" type="button" value="4" onclick="insert(4)"></td>
-                <td><input class="num" type="button" value="5" onclick="insert(5)"></td>
-                <td><input class="num" type="button" value="6" onclick="insert(6)"></td>
-                <td><input class="op sub" type="button" value="-" onclick="insert('-')"></td>
+                <td class="num" id="numberFour">4</td>
+                <td class="num" id="numberFive">5</td>
+                <td class="num" id="numberSix">6</td>
+                <td class="op" id="opMinus">-</td>
             </tr>
             <tr>
-                <td><input class="num" type="button" value="1" onclick="insert(1)"></td>
-                <td><input class="num" type="button" value="2" onclick="insert(2)"></td>
-                <td><input class="num" type="button" value="3" onclick="insert(3)"></td>
-                <td><input class="op add" type="button" value="+" onclick="insert('+')"></td>
+                <td class="num" id="numberOne">1</td>
+                <td class="num" id="numberTwo">2</td>
+                <td class="num" id="numberThree">3</td>
+                <td class="op" id="opPlus">+</td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: center;"><input class="numo" type="button" value="0" onclick="insert(0)"></td>
-                <td><input class="point" type="button" value="." onclick="insert('.')"></td>
-                <td><input class="eq" type="button" value="=" onclick="insert('=')"></td>
+                <td colspan="2" class="num zero" id="numberZero">0</td>
+                <td class="point" id="point">.</td>
+                <td class="op" id="opEqual">=</td>
             </tr>
 
         </table>
     </form>
 </div>
-</body>
 <script>
-function insert(num){
-    document.getElementById('display').innerHTML = document.getElementById('display').innerHTML+num;
+// Variables for buttons    
+let buttonOne = document.getElementById('numberOne');
+let buttonTwo = document.getElementById('numberTwo');
+let buttonThree = document.getElementById('numberThree');
+let buttonFour = document.getElementById('numberFour');
+let buttonFive = document.getElementById('numberFive');
+let buttonSix = document.getElementById('numberSix');
+let buttonSeven = document.getElementById('numberSeven');
+let buttonEight = document.getElementById('numberEight');
+let buttonNine = document.getElementById('numberNine');
+let buttonZero = document.getElementById('numberZero');
+
+//varriable for decimal and  clear
+let buttonDecimal = document.getElementById('point');
+let buttonClear = document.getElementById("clear");
+
+//varriable for group of numbers
+let theNumbers = document.getElementsByClassName("num");
+
+//varriables for display
+let displayValueE = document.getElementById('display');
+let displayValue = '0';
+let displayVarriable = document.getElementById('display');
+
+//Updates the display with the object click, also makes it so leading 0 is removed
+let updateDisplay = (clickObj) => {
+    var buttonText = clickObj.target.innerText;
+    
+    if (displayValue === '0')
+        displayValue = '';
+    displayValue += buttonText;
+    displayValueE.innerText = displayValue;
 }
-function clean(){
-    document.getElementById('display').innerHTML = "0";
+
+//Goes though the class numbers and adds a click event to each
+for (let i = 0; i < theNumbers.length; i++){
+    theNumbers[i].addEventListener('click', updateDisplay, false);
 }
-let display = document.getElementsByName("display");
-let decimalClicker = false;
-document.getElementsByClassName("point").addEventListener("click", function(){
-    if (display != ".")
-        if(decimalClicked != true){
-            display += ".";
-            decimalClicked = true;
-        }
+
+//Clears the display value
+buttonClear.onclick = () =>{
+    displayValue = '0';
+    displayValueE.innerHTML = displayValue;
 }
-)
+
+//If statement that looks if display value does not include a decimal and if it does include it
+buttonDecimal.onclick = () => {
+    if (!displayValue.includes('.'))
+    displayValue += '.';
+displayValueE.innerText = displayValue;
+}
+// Found how to do the variables by CodeEXE and the sitepoint for the fat arrow functions 
 </script>
+
+</body>
 </html>
