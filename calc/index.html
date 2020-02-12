@@ -44,17 +44,6 @@
     </form>
 </div>
 <script>
-// Variables for buttons    
-let buttonOne = document.getElementById('numberOne');
-let buttonTwo = document.getElementById('numberTwo');
-let buttonThree = document.getElementById('numberThree');
-let buttonFour = document.getElementById('numberFour');
-let buttonFive = document.getElementById('numberFive');
-let buttonSix = document.getElementById('numberSix');
-let buttonSeven = document.getElementById('numberSeven');
-let buttonEight = document.getElementById('numberEight');
-let buttonNine = document.getElementById('numberNine');
-let buttonZero = document.getElementById('numberZero');
 
 //varriable for decimal and  clear
 let buttonDecimal = document.getElementById('point');
@@ -66,14 +55,14 @@ let theNumbers = document.getElementsByClassName("num");
 //varriables for display
 let displayValueE = document.getElementById('display');
 let displayValue = '0';
-let displayVarriable = document.getElementById('display');
 
 //Updates the display with the object click, also makes it so leading 0 is removed
 let updateDisplay = (clickObj) => {
     var buttonText = clickObj.target.innerText;
     
-    if (displayValue === '0')
+    if (displayValue === '0') {
         displayValue = '';
+    }
     displayValue += buttonText;
     displayValueE.innerText = displayValue;
 }
@@ -91,9 +80,10 @@ buttonClear.onclick = () =>{
 
 //If statement that looks if display value does not include a decimal and if it does include it
 buttonDecimal.onclick = () => {
-    if (!displayValue.includes('.'))
-    displayValue += '.';
-displayValueE.innerText = displayValue;
+    if (!displayValue.includes('.')) {
+        displayValue += '.';
+    }
+    displayValueE.innerText = displayValue;
 }
 // Found how to do the variables by CodeEXE and the sitepoint for the fat arrow functions 
 </script>
