@@ -71,14 +71,14 @@
 */
    switch (i){
       case 5:
-         listItem = "item" + 1;
+         listItem = "item" + i;
          document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
          document.getElementById("toolBox").value = "";
-         document.getElementById("resultsExp1").innerHTML = "Thanks for your suggestions";
+         document.getElementById("resultsExpl").innerHTML = "Thanks for your suggestions";
          i++;
          break;
       default:
-         listItem = "item" + 1;
+         listItem = "item" + i;
          document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
          document.getElementById("toolBox").value = "";
          i++;
