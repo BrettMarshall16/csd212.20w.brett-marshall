@@ -58,7 +58,7 @@ function calcTotal(){
 }
 let submitButton = document.getElementById("sButton");
 if (submitButton.addEventListener){
-   submitButton.addEventListener("onclick", calcTotal, false);
+   submitButton.addEventListener("click", calcTotal, false);
 } else if (submitButton.attachEvent){
    submitButton.attachEvent("onclick",calcTotal);
 }
