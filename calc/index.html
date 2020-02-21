@@ -56,6 +56,9 @@ let buttonEight = document.getElementById('numberEight');
 let buttonNine = document.getElementById('numberNine');
 let buttonZero = document.getElementById('numberZero');
 
+//varriable for operations
+let opertationsButtons = document.getElementsByClassName('op');
+
 //varriable for decimal and  clear
 let buttonDecimal = document.getElementById('point');
 let buttonClear = document.getElementById("clear");
@@ -66,6 +69,8 @@ let theNumbers = document.getElementsByClassName("num");
 //varriables for display
 let displayValueE = document.getElementById('display');
 let displayValue = '0';
+let pendingVal;
+let evalString = [];
 let displayVarriable = document.getElementById('display');
 
 //Updates the display with the object click, also makes it so leading 0 is removed
@@ -78,14 +83,68 @@ let updateDisplay = (clickObj) => {
     displayValueE.innerText = displayValue;
 }
 
+//perform the operation
+let performOperation =(clickObj) => {
+    let operator = clickObj.target.innerText;
+
+    switch(operator){
+        case "+":
+            pendingVal = displayValue;
+            displayValue = 0;
+            displayValueE.innerText = displayValue;
+            evalString.push(pendingVal);
+            evalString.push("+");
+
+            break;
+        case "-":
+            pendingVal = displayValue;
+            displayValue = 0;
+            displayValueE.innerText = displayValue;
+            evalString.push(pendingVal);
+            evalString.push("-");
+            break;
+
+        case "x":
+            pendingVal = displayValue;
+            displayValue = 0;
+            displayValueE.innerText = displayValue;
+            evalString.push(pendingVal);
+            evalString.push("*");
+            break;
+        
+        case "/":
+            pendingVal = displayValue;
+            displayValue = 0;
+            displayValueE.innerText = displayValue;
+            evalString.push(pendingVal);
+            evalString.push("/");
+            break;
+    
+        case "=":
+            evalString.push(displayValue);
+            let evaluation = eval(evalString.join([' ']));
+            displayVal = evaluation + '';
+            displayValueE.innerText = displayVal;
+            evalString = [];
+            break;
+    }
+}
+
 //Goes though the class numbers and adds a click event to each
 for (let i = 0; i < theNumbers.length; i++){
     theNumbers[i].addEventListener('click', updateDisplay, false);
 }
 
+//Loop for operations events
+for (let i =0; i < opertationsButtons.length; i++){
+    opertationsButtons[i].addEventListener('click', performOperation, false);
+}
+
 //Clears the display value
 buttonClear.onclick = () =>{
     displayValue = '0';
+    pendingVal = undefined;
+    evalString = [];
     displayValueE.innerHTML = displayValue;
 }
 
