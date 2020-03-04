@@ -23,15 +23,15 @@ var messageElement = document.getElementById("message");
 /* global variables referencing fieldset elements */
 var acresFieldset = document.getElementsByTagName("fieldset")[0];
 var cropsFieldset = document.getElementsByTagName("fieldset")[1];
-var monthsFieldset document.getElementsByTagName("fieldset")[2];
-var fuelFieldset = document.getElementsByTagName("fieldset)[3];
+var monthsFieldset = document.getElementsByTagName("fieldset")[2];
+var fuelFieldset = document.getElementsByTagName("fieldset")[3];
 
 /* global variables referencing text input elements */
 var monthsBox = document.forms[0].months;
 var acresBox = document.forms[0].acres;
 
 /* verify acres text box entry is a positive number */
-function verifyAcres) {
+function verifyAcres() {
    testFormCompleteness();      
 }
 
@@ -54,7 +54,7 @@ function verifyMonths() {
       if (i === 7){
          throw "please select atleast one crop";
       }
-   catch(message){
+   } catch(message){
       cropsComplete = false;
       messageHeadElement.innerHTML = "";
       messageElement.innerHTML = message;
