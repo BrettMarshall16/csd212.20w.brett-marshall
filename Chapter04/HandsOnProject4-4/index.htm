@@ -62,12 +62,12 @@
          }
          else { // add entered value to array and write results to document
             document.getElementById("resultsExpl").innerHTML = "You entered the following places:";
-            listItem = "";
-            for (j = 1; j < 6; j++) { // write each array element to its corresponding list item
+            var listItem = "";
+            for (var j = 1; j < 6; j++) { // write each array element to its corresponding list item
                listItem = "item" + j;
                document.getElementById(listItem).innerHTML = places[j];
             }
-         
+         }
       }
 
       // add backward compatible event listener to Submit button
@@ -77,7 +77,6 @@
       } else if (submitButton.attachEvent)  {
         submitButton.attachEvent("onclick", processInput);
       }
-   }
    </script>
 </body>
 </html>
