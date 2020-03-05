@@ -75,6 +75,8 @@
      */
     function positionElementOnGrid(el, gridX, gridY) {
         // TODO: position the element
+        el.style.top = px(gridX);
+        el.style.left = px(gridY);
     }
 
     /**
@@ -101,16 +103,35 @@
      * The number of ticks per second are determined by snakeSpeed, and this speed can be converted into a millisecond
      * value using the msPerTick function above.
      */
-    function tick() {
+    function tick(snakeSpeed) {
         // TODO: use a timer to update the game and re-call tick
+        setTimeout(() => {
+            if(gameState == "running")
+                updateGame();
+        }, msPerTick(snakeSpeed));
+        
     }
 
     function createSnakeSegmentElement() {
         // TODO: create and return a snake segment element
+        let snakeSegment = document.createElement("div");
+        snakeSegment.classList.add("snake-segment");
+        snakeSegment.style.backgroundColor = snakeColor;
+        snakeSegment.style.width = px(1);
+        snakeSegment.style.height = px(1);
+        return snakeSegment;
     }
 
     function createFoodElement() {
         // TODO: create and return a food element
+        let foodElement = document.createElement("div");
+        foodElement.classList.add("food");
+        foodElement.style.width = px(1);
+        foodElement.style.height = px(1);
+        foodElement.style.backgroundColor = "green";
+        foodElement.style.borderRadius = "50%";
+        return foodElement;
+
     }
     
     function killSnake() {
@@ -145,10 +166,26 @@
 
     function initSnake() {
         // TODO: get a snake element initialized and on the board!
+        snakeX = 0;
+        snakeY = 0;
+
+        snakeSpeed = INITIAL_SPEED;
+        snakeDirection = INITIAL_SNAKE_DIRECTION;
+        
+        snakeEl = createSnakeSegmentElement(snakeEl);
+        boardEl.appendChild(snakeEl);
+        positionElementOnGrid(snakeEl, 0, 0);
+
     }
 
     function addNewFood() {
         // TODO: add a new food element
+        foodEl = createFoodElement();
+        boardEl.appendChild(foodEl);
+        gameboard.appendChild(foodEl);
+        positionElementOnGrid(foodEl, 14, 35)
+
+
     }
 
     function updateScoreElement() {
