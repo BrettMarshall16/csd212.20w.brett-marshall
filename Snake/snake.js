@@ -75,8 +75,8 @@
      */
     function positionElementOnGrid(el, gridX, gridY) {
         // TODO: position the element
-        el.style.top = px(gridX);
-        el.style.left = px(gridY);
+        el.style.top = px(gridY);
+        el.style.left = px(gridX);
     }
 
     /**
@@ -88,6 +88,15 @@
 
     function isSnakeOutOfBounds() {
         // TODO: return true if the snake is out of bounds; otherwise return false
+        if (snakeX > boardW){
+            return true;
+        } else if(snakeX < 0) {
+            return true;
+        } else if(snakeY > boardH){
+            return true;
+        } else if(snakeY < 0){
+            return true;
+        } else {}
     }
 
     /**
@@ -103,11 +112,13 @@
      * The number of ticks per second are determined by snakeSpeed, and this speed can be converted into a millisecond
      * value using the msPerTick function above.
      */
-    function tick(snakeSpeed) {
+    function tick() {
         // TODO: use a timer to update the game and re-call tick
-        setTimeout(() => {
-            if(gameState == "running")
-                updateGame();
+        setTimeout(function(){
+            if(gameState === "running"){
+            updateGame();
+            tick();
+            }
         }, msPerTick(snakeSpeed));
         
     }
@@ -136,6 +147,7 @@
     
     function killSnake() {
         // TODO: set the snake's background color to transparent
+        snakeEl.style.backgroundColor = "transparent";
     }
 
     function clearBoard() {
@@ -156,12 +168,14 @@
         theMenu.classList.add("open")
     }
 
-    function hideGameover() {
+    function hideGameOver() {
         // TODO: hide the gameover element
     }
 
-    function showGameover() {
+    function showGameOver() {
         // TODO: show the gameover element
+        let gameOver = document.getElementById("game-over");
+        gameOver.classList.add("show");
     }
 
     function initSnake() {
@@ -183,7 +197,7 @@
         foodEl = createFoodElement();
         boardEl.appendChild(foodEl);
         gameboard.appendChild(foodEl);
-        positionElementOnGrid(foodEl, 14, 35)
+        positionElementOnGrid(foodEl, 35, 14)
 
 
     }
@@ -198,6 +212,26 @@
 
     function updateSnakePosition() {
         // TODO: update the snake's position depending on the snake's direction
+        switch(snakeDirection){
+            case "r":
+            case "R":
+                snakeX ++;
+                break;
+            case "l":
+            case "L":
+                snakeX --;
+                break;
+            case "u":
+            case "U":
+                snakeY ++;
+                break;
+            case "d":
+            case "D":
+                snakeY --;
+                break;
+                        
+        }
+        
     }
 
     function isGameOver() {
@@ -238,7 +272,6 @@
         addNewFood()
         
         score = 0
-
         // TODO: hide the GAME OVER element 
 
     }
@@ -262,6 +295,11 @@
 
     function handleKeyPress(event) {
         // TODO: set snakeDirection according to the key the user pressed
+        console.log(event.key);
+        let keyPressed = event.key;
+        if (keyPressed = "ArrowDown"){
+            snakeDirection = "U"
+        }
     }
 
     function init() {
@@ -273,6 +311,8 @@
     }
 
     window.onload = init;
+
+    window.addEventListener("keydown", handleKeyPress);
 
     // TODO: add a window.keydown listener
 
