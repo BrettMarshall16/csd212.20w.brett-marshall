@@ -84,15 +84,20 @@
      */
     function isAtSamePos(el1, el2) {
         // TODO: determine if the two elements are at the same location
+        if(el1.style.top == el2.style.top && el1.style.left == el2.style.left){
+            return true;
+        }else{
+            return false;
+            }
     }
 
     function isSnakeOutOfBounds() {
         // TODO: return true if the snake is out of bounds; otherwise return false
-        if (snakeX > boardW){
+        if (snakeX > boardW - 1){
             return true;
         } else if(snakeX < 0) {
             return true;
-        } else if(snakeY > boardH){
+        } else if(snakeY > boardH - 1){
             return true;
         } else if(snakeY < 0){
             return true;
@@ -204,10 +209,12 @@
 
     function updateScoreElement() {
         // TODO: update the score element to show the current score
+        document.getElementById("score-container").innerHTML = score;
     }
 
     function updateSpeedElement() {
         // TODO: update the speed element to show the snake's speed
+        document.getElementById("speed-container").innerHTML = snakeSpeed + " blocks/sec";
     }
 
     function updateSnakePosition() {
@@ -223,11 +230,11 @@
                 break;
             case "u":
             case "U":
-                snakeY ++;
+                snakeY --;
                 break;
             case "d":
             case "D":
-                snakeY --;
+                snakeY ++;
                 break;
                         
         }
@@ -273,7 +280,6 @@
         
         score = 0
         // TODO: hide the GAME OVER element 
-
     }
 
     function startGame() {
@@ -297,9 +303,21 @@
         // TODO: set snakeDirection according to the key the user pressed
         console.log(event.key);
         let keyPressed = event.key;
-        if (keyPressed = "ArrowDown"){
-            snakeDirection = "U"
-        }
+        if (gameState = "running")
+            switch(keyPressed){
+                case "ArrowDown":
+                    snakeDirection = "D";
+                    break;
+                case "ArrowUp":
+                    snakeDirection = "U";
+                    break;
+                case "ArrowRight":
+                    snakeDirection = "R";
+                    break;
+                case "ArrowLeft":
+                    snakeDirection = "L";
+                    break;
+            }
     }
 
     function init() {
