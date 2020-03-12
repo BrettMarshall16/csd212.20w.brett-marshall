@@ -6,8 +6,8 @@
       Chapter 5
       Hands-on Project 5-1
 
-      Author: 
-      Date:   
+      Author: Brett Marshall
+      Date:   2020-03-11
 
       Filename: index.htm
    -->
@@ -19,11 +19,21 @@
 <body>
    <h1>
       Hands-on Project 5-1
+      6a) The information seemed correct but inernet explorer showed nothing
+      b) The differeence is the last parts of the browser
+      c) User agent would probably be the best one to use as webbrowser was showing netscape and operating system was showing win32 which was incorect.
    </h1>
    
    <p></p>
    <p></p>
    <p></p>
    <p></p>
+   <script>
+      "use strict";
+      document.getElementsByTagName("p")[0].innerHTML = "Web Browser Name: " + navigator.appName;
+      document.getElementsByTagName("p")[1].innerHTML = "Web Browser Version: " + navigator.appVersion;
+      document.getElementsByTagName("p")[2].innerHTML = "Operating Platform: " + navigator.platform;
+      document.getElementsByTagName("p")[3].innerHTML = "User Agent: " + navigator.userAgent;
+   </script>
 </body>
 </html>
