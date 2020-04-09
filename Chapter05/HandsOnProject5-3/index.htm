@@ -73,13 +73,12 @@
        } else if (submitButton.attachEvent){
          submitButton.attachEvent("onclick", processInput);
        }
-       if (window.addEventListener){
-         window.addEventListener("load", createEventListener, false);
-       } else if (window.attachEvent){
-         window.attachEvent("onload", createEventListener);
-       }
      }
-     createEventListener()
+     if (window.addEventListener){
+       window.addEventListener("load", createEventListener, false);
+     } else if (window.attachEvent){
+       window.attachEvent("onload", createEventListener);
+     }
    </script>
 </body>
 </html>
