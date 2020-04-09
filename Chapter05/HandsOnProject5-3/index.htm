@@ -63,7 +63,7 @@
           winOptions = "width = 300, height = 100";
           winOptions += ",left=" + "winLeft";
           winOptions += ",top=" + "winTop";
-          window.open("confirm.htm", "confirm", winOptions);
+          var confirmWindow = window.open("confirm.htm", "confirm", winOptions);
           settimout("confirmWindow.close()", 5000);
      }
      function createEventListener(){
@@ -79,6 +79,7 @@
          window.attachEvent("onload", createEventListener);
        }
      }
+     createEventListener()
    </script>
 </body>
 </html>
