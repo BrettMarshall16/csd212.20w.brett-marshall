@@ -63,7 +63,7 @@
           winOptions = "width = 300, height = 100";
           winOptions += ",left=" + "winLeft";
           winOptions += ",top=" + "winTop";
-          window.open("confirm.htm", "confirm", winOptions);
+          var confirmWindow = window.open("confirm.htm", "confirm", winOptions);
           settimout("confirmWindow.close()", 5000);
      }
      function createEventListener(){
@@ -73,11 +73,11 @@
        } else if (submitButton.attachEvent){
          submitButton.attachEvent("onclick", processInput);
        }
-       if (window.addEventListener){
-         window.addEventListener("load", createEventListener, false);
-       } else if (window.attachEvent){
-         window.attachEvent("onload", createEventListener);
-       }
+     }
+     if (window.addEventListener){
+       window.addEventListener("load", createEventListener, false);
+     } else if (window.attachEvent){
+       window.attachEvent("onload", createEventListener);
      }
    </script>
 </body>

@@ -202,19 +202,19 @@
         foodEl = createFoodElement();
         boardEl.appendChild(foodEl);
         gameboard.appendChild(foodEl);
-        positionElementOnGrid(foodEl, 35, 14)
+        positionElementOnGrid(foodEl, boardW-1, boardH-1)
 
 
     }
 
     function updateScoreElement() {
         // TODO: update the score element to show the current score
-        document.getElementById("score-container").innerHTML = score;
+        document.getElementById("score").innerHTML = score;
     }
 
     function updateSpeedElement() {
         // TODO: update the speed element to show the snake's speed
-        document.getElementById("speed-container").innerHTML = snakeSpeed + " blocks/sec";
+        document.getElementById("speed").innerHTML = snakeSpeed + " blocks/sec";
     }
 
     function updateSnakePosition() {
@@ -301,7 +301,6 @@
 
     function handleKeyPress(event) {
         // TODO: set snakeDirection according to the key the user pressed
-        console.log(event.key);
         let keyPressed = event.key;
         if (gameState = "running")
             switch(keyPressed){
