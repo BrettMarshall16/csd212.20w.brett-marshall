@@ -55,7 +55,7 @@
          selectedDate = new Date(selection.value);
          selectedDate.setUTCHours(12);
          dayOfWeekNumber = selectedDate.getUTCDay();
-         dayOfWeekNumber = allDaysOfWeek[dayOfWeekNumber];
+         dayOfWeekName = allDaysOfWeek[dayOfWeekNumber];
          result.innerHTML = dayOfWeekName;
       }
 

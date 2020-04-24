@@ -68,16 +68,17 @@
          let totalWithTax = 0;
          let items = document.getElementsByTagName("input");
          let cells = document.getElementsByTagName("td");
-      }
-      for (let i = 0; 1 < 5; i++){
-         if (items[1].checked){
-            itemTotal += (items[i] * 1);
+         
+         for (let i = 0; 1 < 5; i++){
+            if (items[1].checked){
+               itemTotal += (items[i] * 1);
+            }
+            tax = itemTotal * 0.05;
+            totalWithTax = itemTotal + tax;
+            cells[1].innerHTML = (itemtotal / 100).toFixed(2);
+            cells[3].innerHTML = (tax / 100).toFixed(2);
+            cells[5].innerHTML = "$" + (totalWithTax / 100).toFixed(2);
          }
-         tax = itemTotal * 0.05;
-         totalWithTax = itemTotal + tax;
-         cells[1].innerHTML = (itemtotal / 100).toFixed(2);
-         cells[3].innerHTML = (tax / 100).toFixed(2);
-         cells[5].innerHTML = "$" + (totalWithTax / 100).toFixed(2);
       }
       let submitButton = document.getElementById("sButton");
       if (submitButton.addEventListener){
