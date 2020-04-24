@@ -17,7 +17,7 @@ function processDeliveryInfo() {
     delivInfo.innerHTML = '';
 
     for (let prop in delivInfo) {
-      delivInfo.innerHTML += "<p>" + delivInfo[prop] + "</p>";
+      delivSummary.innerHTML += "<p>" + delivInfo[prop] + "</p>";
     }
 }
 function processFood() {
