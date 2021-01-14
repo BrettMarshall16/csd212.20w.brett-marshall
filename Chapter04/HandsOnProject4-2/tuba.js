@@ -15,7 +15,6 @@ var acresComplete = false;
 var cropsComplete = false;
 var monthsComplete = false;
 var fuelComplete = true;
-var verifyAcres = true;
 
 /* global variables referencing sidebar h2 and p elements */
 var messageHeadElement = document.getElementById("messageHead");
@@ -33,34 +32,68 @@ var acresBox = document.forms[0].acres;
 
 /* verify acres text box entry is a positive number */
 function verifyAcres() {
-   testFormCompleteness();      
+   var validity = true;
+   var messageText = "";
+   try {
+      if (!(acresBox.value > 0)) {
+         throw "Please enter a number of acres greater than 0.";
+      } 
+   }
+   catch(message) {
+      validity = false;
+      messageText = message;
+      acresBox.value = ""; // remove erroneous entry from input box
+   }
+   finally {
+      acresComplete = validity;
+      messageElement.innerHTML = messageText;
+      messageHeadElement.innerHTML = ""; // remove any former recommendation heading
+      testFormCompleteness();      
+   }   
 }
 
 /* verify at least one crops checkbox is checked */
 function verifyCrops() {
-   testFormCompleteness();
+   try {
+      for (var i = 0; i < 7; i++) {
+         if (cropsFieldset.getElementsByTagName("input")[i].checked) {
+            cropsComplete = true;
+            messageElement.innerHTML = ""; // clear previous message or recommendation
+            testFormCompleteness();
+            i = 8;
+         } 
+      }
+      if (i === 7) {
+         throw "Please select at least one crop.";
+      }
+   }
+   catch(message) {
+      cropsComplete = false;
+      messageHeadElement.innerHTML = ""; // remove any former recommendation heading
+      messageElement.innerHTML = message; // display error message
+   }
 }
 
 /* verify months text box entry is between 1 and 12 */
 function verifyMonths() {
-   try{
-      for (var i=0; i<7; i++){
-         if(cropsFieldset.getElementsByTagName("input")[i].checked){
-            cropsComplete = true;
-            messageElement.innerHTML = "";
-            testFormCompleteness();
-            i = 8;
-         }
-         if (i === 7){
-            throw "please select atleast one crop";
-         }
+   var validity = true;
+   var messageText = "";
+   try {
+      if (!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
+         throw "Please enter a number of months between 1 and 12.";
       }
-   } catch (message){
-         cropsComplete = false;
-         messageHeadElement.innerHTML = "";
-         messageElement.innerHTML = message;
-
-   } 
+   }
+   catch(message) {
+      validity = false;
+      messageText = message;
+      monthsBox.value = ""; // remove erroneous entry from input box
+   }
+   finally {
+      monthsComplete = validity;
+      messageElement.innerHTML = messageText;
+      messageHeadElement.innerHTML = ""; // remove any former recommendation heading
+      testFormCompleteness();
+   }
 }
 
 /* verify that a fuel option button is selected */
@@ -77,8 +110,8 @@ function testFormCompleteness() {
 
 /* generate tractor recommendation based on user selections */
 function createRecommendation() {
-   if (acresBox.value >= 5000) { // 5000 acres or less, no crop test needed
-      if (monthsBox.value <= 10) { // 10+ months of farming per year
+   if (acresBox.value <= 5000) { // 5000 acres or less, no crop test needed
+      if (monthsBox.value >= 10) { // 10+ months of farming per year
          messageHeadElement.innerHTML = "E3250";
          messageElement.innerHTML = "A workhorse for a small farm or a big backyard. A medium- to heavy-duty tractor that can haul whatever you throw at it year-round.";
       } else { // 9 or fewer months per year
